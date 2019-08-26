@@ -1,0 +1,22 @@
+.loader {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	margin-top: 3%;
+
+	&__text {
+		font-size: 2.5rem;
+		color: $main-color;
+		margin-left: 2%;
+		font-family: Chewy;
+	}
+}
+
+@media (max-width: $phoneWidth) {
+	.loader {
+		&__text {
+			font-size: 2rem;
+		}
+	}
+}

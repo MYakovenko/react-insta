@@ -1,0 +1,242 @@
+@import "utils/base";
+@import "utils/vars";
+
+html {
+	line-height: $mainLineHeight;
+	font-family: 'Raleway', 'Times New Roman', Times, serif;
+	font-size: $mainFontSize;
+	color: $mainFontColor;
+	height: 100%;
+	@media screen and (max-width: $desktopWidth) {
+		font-size: 16px;
+	}
+	@media screen and (max-width: $tableWidth) {
+		font-size: 14px;
+	}
+	@media screen and (max-width: $phoneWidth) {
+		font-size: 10px;
+	}
+}
+
+.wrapper {
+	margin: 0 auto;
+	width: 100%;
+	min-height: 100vh;
+	background-color: $light-color;
+
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/img/photomontage.jpg');
+
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: 0px;
+
+	.container {
+		min-height: 500px;
+		margin: 0 auto;
+		padding: 0 3%;
+		text-align: center;
+		background-image: url("/assets/img/photo.jpg");
+		background-position: top;
+		background-repeat: no-repeat;
+		background-size: cover;
+		margin-bottom: 2%;
+
+		position: relative;
+
+		&__title {
+			width: 70%;
+			font-family: Chewy;
+			font-size: 6rem;
+			color: $additional-color;
+
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			&__logo {
+				margin-left: 3%;
+				font-size: 8rem;
+				color: $main-color;
+			}
+		}
+
+		&__input-wrapper {
+			display: flex;
+			width: 40%;
+			flex-direction: row;
+			margin-left: 3%;
+			justify-content: center;
+			align-items: center;
+
+			position: absolute;
+			bottom: 7%;
+			left: 0;
+
+			#search-input {
+				width: 95%;
+			}
+		}
+	}
+	.pictures-wrapper {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: row;
+
+		&_main {
+			width: 65%;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			transition: all .2s ease;
+			margin-right: 3%;
+			padding: 1%;
+			border: 3px solid $main-color;
+			background-color: $opacity-light-color;
+			margin-bottom: 2%;
+
+			&.isDraggingOver {
+				background-color: $opacity-additional-color;
+			}
+		}
+
+		&_favorite {
+			width: 30%;
+			min-height: 95%;
+			padding: 1%;
+			position: absolute;
+			top: calc(500px + 4%);
+			right: 5%;
+
+			border: 3px solid $additional-color;
+			background-color: $opacity-light-color;
+
+			.picture__close-icon {
+				display: block;
+			}
+
+			&.fixed {
+				position: fixed;
+				top: 2%;
+				right: 5%;
+				overflow: auto;
+				height: 95%;
+			}
+		}
+	}
+	.picture-faivoirites-conteiner {
+		position: relative;
+	}
+
+	.favorite_title {
+		font-family: Chewy;
+		font-size: 4rem;
+		color: $main-color;
+
+		&.mobile {
+			display: none;
+		}
+	}
+
+	.close-icon {
+		position: absolute;
+		top: 5%;
+		right: 5%;
+	}
+}
+
+@media (max-width: $tableWidth) {
+	.wrapper {
+		.container {
+			min-height: 300px;
+			&__title {
+				font-size: 2.5rem;
+
+				&__logo {
+					font-size: 3.5rem;
+				}
+			}
+		}
+		.pictures-wrapper {
+			padding: 2%;
+
+			&_main {
+				width: 55%;
+				margin-right: 2%;
+				grid-template-columns: 1fr;
+			}
+
+			&_favorite {
+				width: 40%;
+				top: calc(300px + 3%);
+				right: 2%;
+				padding: 0;
+
+				&.fixed {
+					right: 2%;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: $phoneWidth) {
+	.wrapper {
+		.container {
+			min-height: 250px;
+			&__title {
+				width: 100%;
+				font-size: 2.5rem;
+
+				&__logo {
+					font-size: 3.5rem;
+				}
+			}
+
+			&__input-wrapper {
+				width: 95%;
+			}
+		}
+		.pictures-wrapper {
+			padding: 0;
+
+			&_main {
+				width: 100%;
+				margin-right: 0;
+				padding: 0;
+				grid-template-columns: 1fr;
+				border: none;
+				background-color: transparent;
+			}
+
+			&_favorite {
+				display: none;
+				width: 40%;
+				top: calc(250px + 1%);
+				right: 0;
+				padding: 0;
+
+				&.fixed {
+					right: 0;
+				}
+			}
+		}
+
+		.favorite_title {
+			font-size: 2.5rem;
+
+			&.mobile {
+				display: block;
+				border: 2px solid $main-color;
+				text-align: center;
+				background-color: $opacity-light-color;
+				margin-bottom: 2%;
+			}
+		}
+	}
+}
+
+// Modules
+@import "modules/pictureCard.scss";
+@import "modules/pictureInfo.scss";
+@import "modules/favorites.scss";
+@import "modules/loader.scss";

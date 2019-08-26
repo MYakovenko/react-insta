@@ -1,0 +1,223 @@
+.pictureInfo {
+	max-width: 1200px;
+	margin: 0 auto;
+	background-color: $default-color;
+	padding: 2%;
+
+	&__back {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		width: 25%;
+		border-bottom: 2px solid transparent;
+		padding: 0 2.5%;
+		cursor: pointer;
+		transition: width .5s ease-in-out;
+
+		&:hover {
+			border-bottom: 2px solid $main-color;
+			transition: width .5s ease-in-out;
+			width: 40%;
+		}
+	}
+
+	&__back-text {
+		font-size: 3rem;
+		color: $main-color;
+		font-family: Chewy;
+		font-weight: 600;
+		margin-left: 2%;
+	}
+
+	&__img-conteiner {
+		position: relative;
+	}
+
+	&__button {
+		position: absolute;
+		bottom: 7%;
+		right: 2%;
+	}
+
+	&__img {
+		border-radius: 5px 5px 0 0;
+		width: 100%;
+		height: 600px;
+		object-fit: cover;
+		margin: 3% 0;
+	}
+
+	&__title {
+		font-size: 2rem;
+		font-weight: bold;
+		margin: 0;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		margin-bottom: 1%;
+		padding: 0 2%;
+	}
+
+	&__owner {
+		margin-top: 0;
+		font-size: 1.3rem;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		margin-bottom: 3%;
+		padding: 0 2%;
+	}
+
+	&__description-title {
+		font-size: 1.6rem;
+		font-weight: bold;
+		margin: 0;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		padding: 0 2%;
+	}
+
+	&__description-info {
+		font-size: 1.4rem;
+		padding: 0 2%;
+	}
+
+	&__date-view-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin-top: 3%;
+		padding: 0 2%;
+	}
+
+	&__datetaken,
+	&__views {
+		margin-bottom: 0;
+		font-size: 1.3rem;
+		font-weight: bold;
+	}
+
+	&__datetaken {
+		margin-right: 5%;
+	}
+
+	.recent-photos {
+		width: 100%;
+		margin-top: 5%;
+		border: 1px solid $main-color;
+		border-radius: 10px;
+
+		&__title {
+			font-size: 2.5rem;
+			font-weight: bold;
+			font-family: Chewy;
+			color: $main-color;
+			margin: 2% 0;
+			text-align: center;
+		}
+
+		&__pictures {
+			width: 90%;
+			min-height: 200px;
+			margin: 0 auto;
+			margin-bottom: 2%;
+
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+	}
+}
+
+@media (max-width: $tableWidth) {
+	.pictureInfo {
+		&__back {
+			width: 33%;
+		}
+
+		&__back-text {
+			font-size: 2.5rem;
+		}
+
+		&__img {
+			height: 400px;
+		}
+
+		&__title {
+			font-size: 1.5rem;
+			margin-bottom: 0;
+		}
+
+		&__owner {
+			font-size: 1.1rem;
+		}
+
+		&__description-title {
+			font-size: 1.4rem;
+		}
+
+		&__description-info {
+			font-size: 1.1rem;
+		}
+
+		&__datetaken,
+		&__views {
+			font-size: 1.1rem;
+		}
+
+		.recent-photos {
+			&__pictures {
+				width: 100%;
+			}
+		}
+	}
+
+	@media (max-width: $phoneWidth) {
+		.pictureInfo {
+			&__back {
+				width: 50%;
+			}
+
+			&__back-text {
+				font-size: 2rem;
+			}
+
+			&__img {
+				height: 200px;
+			}
+
+			&__title {
+				font-size: 1.3rem;
+				margin-bottom: 0;
+			}
+
+			&__owner {
+				font-size: 1rem;
+			}
+
+			&__description-title {
+				font-size: 1.3rem;
+			}
+
+			&__description-info {
+				font-size: 1rem;
+			}
+
+			&__datetaken,
+			&__views {
+				font-size: 1rem;
+			}
+
+			.recent-photos {
+				&__title {
+					font-size: 1.7rem;
+				}
+
+				&__pictures {
+					grid-template-columns: 1fr;
+				}
+			}
+		}
+	}
+}
