@@ -8,7 +8,7 @@ import { store } from './store/store';
 
 ReactDOM.render(
 	<Provider store={store}>
-		<BrowserRouter>
+		<BrowserRouter basename="/react-insta">
 			<Router />
 		</BrowserRouter>
 	</Provider>,

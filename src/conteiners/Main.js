@@ -60,6 +60,7 @@ class Main extends Component {
 
 			if (!localStorage.favorites) {
 				localStorage.setItem('favorites', JSON.stringify([ draggedPicture ]));
+				this.props.changeFavorites();
 			} else {
 				localStorage.setItem(
 					'favorites',

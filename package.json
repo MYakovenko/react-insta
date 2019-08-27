@@ -1,7 +1,7 @@
 {
 	"name": "instagram_test_task",
 	"version": "1.0.0",
-	"homepage": "https://MYakovenko.github.io/react-insta-project/",
+	"homepage": "https://MYakovenko.github.io/react-insta/",
 	"description": "Instagram test task",
 	"main": "index.js",
 	"scripts": {
