@@ -5,5 +5,6 @@ export default {
 	searchText: 'popular',
 	recentPhotos: null,
 	isFetching: false,
-	favorites: []
+	favorites: [],
+	messageFlag: false
 };

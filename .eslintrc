@@ -8,7 +8,6 @@
     "extends": ["airbnb-base", "prettier", "eslint:recommended", "plugin:react/recommended"],
     "plugins": ["react", "jsx-a11y", "import", "react-hooks"],
     "rules": {
-      "react/prop-types": 0,
       "no-underscore-dangle": 0,
     }
   }

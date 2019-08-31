@@ -27,13 +27,48 @@ export const changeFavorites = (payload) => ({
 	payload
 });
 
-export const removeFromFavorites = (id) => {
+export const showMessage = (payload) => ({
+	type: types.SHOW_MESSAGE,
+	payload
+});
+
+export const closeMessage = (payload) => ({
+	type: types.CLOSE_MESSAGE,
+	payload
+});
+
+export const removeFromFavorites = (id) => (dispatch) => {
 	const favorites = JSON.parse(localStorage.favorites);
-	favorites.splice(favorites.findIndex((elem) => elem.id === id), 1);
-	localStorage.setItem('favorites', JSON.stringify(favorites));
+	try {
+		favorites.splice(favorites.findIndex((elem) => elem.id === id), 1);
+		localStorage.setItem('favorites', JSON.stringify(favorites));
+		dispatch(changeFavorites());
+	} catch (err) {
+		dispatch(showMessage(`Can't remove picture from favorites`));
+	}
 	return {
 		type: types.REMOVE_FROM_FAVORITES,
 		favorites
+	};
+};
+
+export const addToFavorites = (payload) => (dispatch) => {
+	const favorites = JSON.parse(localStorage.favorites);
+	try {
+		if (!localStorage.favorites) {
+			localStorage.setItem('favorites', JSON.stringify([ payload ]));
+		} else if (favorites.some((elem) => elem.id === payload.id)) {
+			dispatch(showMessage('This picture already in favorites'));
+		} else {
+			localStorage.setItem('favorites', JSON.stringify(favorites.concat([ payload ])));
+			dispatch(changeFavorites());
+		}
+	} catch (err) {
+		dispatch(showMessage(`Can't add picture to favorites`));
+	}
+	return {
+		type: types.ADD_TO_FAVORITES,
+		payload
 	};
 };
 
@@ -53,10 +88,10 @@ const getPicturesRequestFail = (payload) => ({
 	payload
 });
 
-export const getPictures = (text) => (dispatch) => {
+export const getPictures = (text = 'popular') => (dispatch) => {
 	dispatch(getPicturesRequest());
 	return flickr('photos.search', {
-		text,
+		text: text === '' ? 'popular' : text,
 		extras: 'url_n, owner_name, description, date_taken, views',
 		page: 1,
 		per_page: 30

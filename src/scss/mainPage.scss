@@ -24,19 +24,19 @@ html {
 	min-height: 100vh;
 	background-color: $light-color;
 
-	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url('https://myakovenko.github.io/react-insta/assets/img/photomontage.jpg'); //  /assets/img/photomontage.jpg
-
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/img/photomontage.jpg'); //  /assets/img/photomontage.jpg
+	//https://myakovenko.github.io/react-insta/assets/img/photomontage.jpg
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: 0px;
 
 	.container {
-		min-height: 500px;
+		min-height: 650px;
 		margin: 0 auto;
 		padding: 0 3%;
 		text-align: center;
-		background-image: url("https://myakovenko.github.io/react-insta/assets/img/photo.jpg"); // /assets/img/photo.jpg
+		background-image: url("/assets/img/photo.jpg"); // /assets/img/photo.jpg
+		// https://myakovenko.github.io/react-insta/assets/img/photo.jpg
 		background-position: top;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -47,7 +47,7 @@ html {
 		&__title {
 			width: 70%;
 			font-family: Chewy;
-			font-size: 6rem;
+			font-size: 8rem;
 			color: $additional-color;
 
 			position: absolute;
@@ -56,7 +56,7 @@ html {
 
 			&__logo {
 				margin-left: 3%;
-				font-size: 8rem;
+				font-size: 10rem;
 				color: $main-color;
 			}
 		}
@@ -83,6 +83,7 @@ html {
 		margin: 0 auto;
 		display: flex;
 		flex-direction: row;
+		justify-content: space-between;
 
 		&_main {
 			width: 65%;
@@ -101,30 +102,34 @@ html {
 		}
 
 		&_favorite {
-			width: 30%;
-			min-height: 95%;
+			width: 33%;
+			height: 94vh;
 			padding: 1%;
-			position: absolute;
-			top: calc(500px + 4%);
-			right: 5%;
+			position: relative;
+			position: -webkit-sticky;
+			position: sticky;
+			top: 3%;
+
+			display: flex;
+			flex-direction: column;
 
 			border: 3px solid $additional-color;
 			background-color: $opacity-light-color;
+
+			&_block {
+				overflow: auto;
+			}
 
 			.picture__close-icon {
 				display: block;
 			}
 
-			&.fixed {
-				position: fixed;
-				top: 2%;
-				right: 5%;
-				overflow: auto;
-				height: 95%;
+			.favorite_title:hover {
+				color: $additional-color;
 			}
 		}
 	}
-	.picture-faivoirites-conteiner {
+	.picture-favorites-container {
 		position: relative;
 	}
 
@@ -145,6 +150,47 @@ html {
 	}
 }
 
+@media (max-width: $desktopWidth) {
+	.wrapper {
+		.container {
+			min-height: 500px;
+			&__title {
+				font-size: 6rem;
+
+				&__logo {
+					font-size: 8rem;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: $desktopMinWidth) {
+	.wrapper {
+		.container {
+			min-height: 500px;
+			&__title {
+				font-size: 4.5rem;
+
+				&__logo {
+					font-size: 6rem;
+				}
+			}
+		}
+		.pictures-wrapper {
+			max-width: 1000px;
+
+			&_main {
+				width: 67%;
+			}
+
+			&_favorite {
+				width: 30%;
+			}
+		}
+	}
+}
+
 @media (max-width: $tableWidth) {
 	.wrapper {
 		.container {
@@ -162,19 +208,12 @@ html {
 
 			&_main {
 				width: 55%;
-				margin-right: 2%;
 				grid-template-columns: 1fr;
 			}
 
 			&_favorite {
 				width: 40%;
-				top: calc(300px + 3%);
-				right: 2%;
 				padding: 0;
-
-				&.fixed {
-					right: 2%;
-				}
 			}
 		}
 	}
@@ -202,7 +241,6 @@ html {
 
 			&_main {
 				width: 100%;
-				margin-right: 0;
 				padding: 0;
 				grid-template-columns: 1fr;
 				border: none;
@@ -212,13 +250,7 @@ html {
 			&_favorite {
 				display: none;
 				width: 40%;
-				top: calc(250px + 1%);
-				right: 0;
 				padding: 0;
-
-				&.fixed {
-					right: 0;
-				}
 			}
 		}
 
@@ -241,3 +273,4 @@ html {
 @import "modules/pictureInfo.scss";
 @import "modules/favorites.scss";
 @import "modules/loader.scss";
+@import "modules/message.scss";

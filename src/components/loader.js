@@ -1,7 +1,8 @@
 import React from 'react';
 import { Spin } from 'antd';
+import PropTypes from 'prop-types';
 
-export const Loader = ({ children, flag }) =>
+const Loader = ({ children, flag }) =>
 	flag ? (
 		<div className="loader loader-wrapper">
 			<Spin size="large" />
@@ -10,3 +11,9 @@ export const Loader = ({ children, flag }) =>
 	) : (
 		children
 	);
+
+Loader.propTypes = {
+	flag: PropTypes.bool,
+	children: PropTypes.element
+};
+export default Loader;

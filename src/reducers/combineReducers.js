@@ -1,7 +1,7 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import instaReduser from "./instaReducer";
+import instaReducer from './instaReducer';
 
 export default combineReducers({
-	instaReduser
+	instaReducer
 });

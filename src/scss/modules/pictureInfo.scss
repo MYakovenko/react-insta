@@ -30,7 +30,7 @@
 		margin-left: 2%;
 	}
 
-	&__img-conteiner {
+	&__img-container {
 		position: relative;
 	}
 
@@ -92,14 +92,14 @@
 		padding: 0 2%;
 	}
 
-	&__datetaken,
+	&__date,
 	&__views {
 		margin-bottom: 0;
 		font-size: 1.3rem;
 		font-weight: bold;
 	}
 
-	&__datetaken {
+	&__date {
 		margin-right: 5%;
 	}
 
@@ -161,7 +161,7 @@
 			font-size: 1.1rem;
 		}
 
-		&__datetaken,
+		&__date,
 		&__views {
 			font-size: 1.1rem;
 		}
@@ -204,7 +204,7 @@
 				font-size: 1rem;
 			}
 
-			&__datetaken,
+			&__date,
 			&__views {
 				font-size: 1rem;
 			}

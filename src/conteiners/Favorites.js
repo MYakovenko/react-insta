@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { Icon, Button } from 'antd';
@@ -7,13 +8,9 @@ import Picture from '../components/pictureCard';
 import 'antd/dist/antd.css';
 
 class Favorites extends Component {
-	constructor(props) {
-		super(props);
-
-		this.onClickHandler = () => {
-			this.props.history.push('/');
-		};
-	}
+	onClickHandler = () => {
+		this.props.history.push('/');
+	};
 
 	render() {
 		const { favorites, removeFromFavorites } = this.props;
@@ -29,9 +26,9 @@ class Favorites extends Component {
 
 						<div className="favorites-banner__title">Favorite pictures</div>
 					</div>
-					<div className="favorites-conteiner">
+					<div className="favorites-container">
 						{favorites.map((elem, index) => (
-							<div className="picture-faivoirites-conteiner" key={`favorite_${elem.id}+${index}`}>
+							<div className="picture-favorites-container" key={`favorite_${elem.id}+${index}`}>
 								<Picture
 									id={elem.id}
 									index={index}
@@ -47,7 +44,7 @@ class Favorites extends Component {
 									className="close-icon"
 									shape="round"
 									type="primary"
-									onClick={removeFromFavorites.bind(this, elem.id)}
+									onClick={removeFromFavorites.bind(null, elem.id)}
 								>
 									<Icon type="close" style={{ fontSize: '14px', color: '#F5CE28' }} />
 								</Button>
@@ -61,7 +58,13 @@ class Favorites extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	favorites: state.instaReduser.favorites
+	favorites: state.instaReducer.favorites
 });
+
+Favorites.propTypes = {
+	favorites: PropTypes.array,
+	removeFromFavorites: PropTypes.func,
+	history: PropTypes.object
+};
 
 export default withRouter(connect(mapStateToProps, actions)(Favorites));

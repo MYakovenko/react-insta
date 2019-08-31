@@ -20,7 +20,7 @@ module.exports = {
 	output: {
 		filename: `${PATHS.assets}js/[name].[hash].js`,
 		path: PATHS.dist,
-		publicPath: './'
+		publicPath: '/'
 	},
 	optimization: {
 		splitChunks: {
@@ -44,7 +44,8 @@ module.exports = {
 					presets: [
 						'@babel/preset-react',
 						[ '@babel/env', { targets: { browsers: [ 'last 7 versions' ] } } ]
-					]
+					],
+					plugins: [ '@babel/proposal-class-properties' ]
 				}
 			},
 			{

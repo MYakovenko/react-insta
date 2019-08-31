@@ -17,10 +17,33 @@ export default (state = initialValue, action) => {
 			};
 		}
 
+		case types.ADD_TO_FAVORITES: {
+			return {
+				...state,
+				favorites: localStorage.favorites && JSON.parse(localStorage.favorites).reverse()
+			};
+		}
+
 		case types.REMOVE_FROM_FAVORITES: {
 			return {
 				...state,
 				favorites: localStorage.favorites && JSON.parse(localStorage.favorites).reverse()
+			};
+		}
+
+		case types.SHOW_MESSAGE: {
+			return {
+				...state,
+				messageFlag: true,
+				error: action.payload
+			};
+		}
+
+		case types.CLOSE_MESSAGE: {
+			return {
+				...state,
+				messageFlag: false,
+				error: null
 			};
 		}
 
